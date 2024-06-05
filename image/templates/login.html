@@ -1,0 +1,52 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('logged in successfully');
+    window.location=('{% url 'home' %}');
+
+</script>
+{% endifequal %}
+{% ifequal error "not" %}
+<script>
+    alert('Username & Password are not Matching');
+</script>
+{% endifequal %}
+<!--the above code is for background-->
+<style>
+  body{
+  background-image: url('static/images/12.jfif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width : 100%;
+  height : 100%;
+
+}
+
+</style>
+
+
+<div class="container">
+    <h2 style="margin-top:20px" align="center">User Login Form</h2><hr>
+
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="uname" placeholder="Enter Username"pattern="[A-Za-z{3}" >
+    <!--if a message has to pop like this feild is required(warning msg) then in above line after username" give space and enter required-->
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd">
+  </div>
+  <button type="submit" class="btn btn-primary"style="height:45px;margin-top:2%;width:25%;float:center">Login</button>
+  <button class="btn btn-primary"style="height:45px;margin-top:2%;width:25%;float:center"><a href="{% url 'signup' %}" style="color:white">Signup</a></button>
+</form>
+</div>
+</div>
+
+{% endblock %}

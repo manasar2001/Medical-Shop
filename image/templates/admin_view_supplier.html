@@ -1,0 +1,48 @@
+{% extends 'navigation.html' %}
+{% block body %}
+<center><h2 style="color:rgb(247, 10, 160);margin-top:2%">View Company</h2></center><hr>
+ <div class="container" style="margin-top:4%">
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>Company Name</th>
+    <!--<th>Image</th>-->
+      <th> Supplier Name</th>
+      <th> Product Name</th>
+    <th>Supplier Contact</th>
+    <th>Date of Delivery</th>
+       <th> Address</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+    {% for i in sup %}
+
+  <tr>
+
+    <td>{{i.cname}}</td>
+    <!--<td><img src="{{i.image.url}}" style="width:50px;height:50px"></td>-->
+      <!--<td>{{i.category.name}}</td>-->
+      <td>{{i.sname}}</td>
+      <td>{{i.prnname}}</td>
+      <td>{{i.scontact}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.add}}</td>
+    <td><a href="{% url 'delete_supplier' i.id %}" onclick="return confirm('Are you sure?')"><button class="button button1">Delete</button></a></td>
+
+  </tr>
+
+    {% endfor %}
+    </tbody>
+{{count}}
+</table>
+
+ </div>
+<script>
+  {% for i in message %}
+  alert("{{i}}")
+  {% endfor %}
+</script>
+
+{% endblock %}

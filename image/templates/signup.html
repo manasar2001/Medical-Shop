@@ -1,0 +1,78 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="margin-top:20px" align="center">Registration Form</h2><hr>
+
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+         <!--inputEmail4-->
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputtext">First Name</label>
+      <input type="text" value="" required="true" pattern="[A-Z a-z]+" class="form-control" placeholder="Enter First Name" name="fname" id="inputtext" title="Number Not Allowed" required="required">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Last Name</label>
+      <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" id="inputPassword4" title="Number Not Allowed"required="required">
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">User Name</label>
+      <input type="text" class="form-control" name="uname" placeholder="Enter User Name" id="inputEmail4" title="Number Not Allowed">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" name="pwd" id="inputPassword4">
+    </div>
+  </div>
+        <div class="form-row">
+<div class="form-group col-md-6">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter Email">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" maxlength="10" class="form-control" id="exampleInputPassword1" placeholder="Enter Contact Number" name="contact">
+    <!--<input type="tel" class="form-control" id="exampleInputPassword1" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}">-->
+  </div>
+        </div>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">City</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter City" name="city">
+  </div>
+
+    <div class="form-group col-md-6">
+        <label for="exampleInputPassword1">Date of Birth</label>
+    <input type="date" class="form-control" id="exampleInputPassword1" name="date">
+  </div>
+        </div>
+    <div class="form-row">
+
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Full Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Address Detail" name="add">
+  </div>
+
+<div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Image</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="img" value="choose file">
+</div></div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+
+{% if error %}
+<script>
+    alert('Regitered Successfully');
+    window.location = "{% url 'login' %}";
+</script>
+{% endif %}
+
+{% endblock %}
